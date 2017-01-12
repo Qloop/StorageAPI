@@ -1,0 +1,21 @@
+spring:
+  resources:
+    chain:
+      enabled: true
+  datasource:
+    url: jdbc:mysql://121.251.255.96:3306/yibantest_storagetest
+    username: yibantest
+    password: yibantest
+    test-while-idle: true
+    validation-query: SELECT 1
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+server:
+  port: 8081
