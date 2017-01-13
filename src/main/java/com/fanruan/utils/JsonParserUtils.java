@@ -39,7 +39,7 @@ public class JsonParserUtils {
     /**
      * 不知key的json解析(不含数组)
      */
-    public static Map<String, String> parserWithoutKey(String jsonStr, boolean hasArray) {
+    public static Map<String, ?> parserWithoutKey(String jsonStr, boolean hasArray) {
         if (!hasArray) {
             JSONObject jsonObject = JSONObject.fromObject(jsonStr);
             Map<String, String> map = new HashMap<>();
@@ -57,8 +57,8 @@ public class JsonParserUtils {
     /**
      * 不知key的json解析(包含数组的json)
      */
-    private static Map<String, String> parserWithoutKey(String jsonStr) {
-        Map<String, String> map = new LinkedHashMap<>();
+    private static Map<String, List<String>> parserWithoutKey(String jsonStr) {
+        Map<String, List<String>> map = new LinkedHashMap<>();
         JSONArray jsonArray = JSONArray.fromObject(jsonStr);
         for (int i = 0; i < jsonArray.size(); i++) {
             JSONObject jsonObject = jsonArray.getJSONObject(i);
@@ -66,9 +66,32 @@ public class JsonParserUtils {
                 String key = (String) keyIterator.next();
                 String value = jsonObject.get(key).toString();
                 System.out.println("key: " + key);
-                map.put(key, value);
+                if (map.keySet().contains(key)) {
+                    map.get(key).add(value);
+                } else {
+                    List<String> valueList = new ArrayList<>();
+                    valueList.add(value);
+                    map.put(key, valueList);
+                }
             }
         }
         return map;
     }
+//    /**
+//     * 不知key的json解析(包含数组的json)
+//     */
+//    private static Map<String, String> parserWithoutKey(String jsonStr) {
+//        Map<String, String> map = new LinkedHashMap<>();
+//        JSONArray jsonArray = JSONArray.fromObject(jsonStr);
+//        for (int i = 0; i < jsonArray.size(); i++) {
+//            JSONObject jsonObject = jsonArray.getJSONObject(i);
+//            for (Iterator<?> keyIterator = jsonObject.keys(); keyIterator.hasNext(); ) {
+//                String key = (String) keyIterator.next();
+//                String value = jsonObject.get(key).toString();
+//                System.out.println("key: " + key);
+//                map.put(key, value);
+//            }
+//        }
+//        return map;
+//    }
 }

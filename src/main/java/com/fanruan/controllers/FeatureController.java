@@ -36,7 +36,7 @@ public class FeatureController {
     public String multipleMsgReceiver(@RequestParam String token, @RequestParam String feature) {
         if (DateUtils.getMD5Data().equalsIgnoreCase(token)) {
             featureService.multipleFeatureHandler(feature);
-            return "多行信息保存.token is: " + token + " And feature is: " + feature;
+            return "多行信息保存.token is: " + token + " and feature is: " + feature;
         } else {
             return AppConfig.ILLEGAL_ACCESS;
         }
