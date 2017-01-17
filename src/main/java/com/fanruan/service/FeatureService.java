@@ -38,7 +38,7 @@ public class FeatureService {
         @SuppressWarnings("unchecked")
         Map<String, String> colDetail = (Map<String, String>) JsonParserUtils.parserWithoutKey(dataSummary.get(1), false);
 
-//        dataBaseHandler(dataTableName, colDetail);
+        dataBaseHandler(dataTableName, colDetail);
     }
 
     public void multipleFeatureHandler(String jsonStr) {

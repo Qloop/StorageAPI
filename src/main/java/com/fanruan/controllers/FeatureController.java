@@ -1,6 +1,7 @@
 package com.fanruan.controllers;
 
 import com.fanruan.conf.AppConfig;
+import com.fanruan.dao.ReturnInfo;
 import com.fanruan.service.FeatureService;
 import com.fanruan.utils.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,22 +24,22 @@ public class FeatureController {
     private FeatureService featureService;
 
     @RequestMapping(value = "", method = RequestMethod.POST)
-    public String singleMsgReceiver(@RequestParam String token, @RequestParam String feature) {
+    public ReturnInfo singleMsgReceiver(@RequestParam String token, @RequestParam String feature) {
         if (DateUtils.getMD5Data().equalsIgnoreCase(token)) {
             featureService.singleFeatureHandler(feature);
-            return "单行信息保存.token is: " + token + " And feature is: " + feature;
+            return new ReturnInfo(AppConfig.UPLOAD_SUCCESS);
         } else {
-            return AppConfig.ILLEGAL_ACCESS;
+            return new ReturnInfo(AppConfig.ILLEGAL_ACCESS);
         }
     }
 
     @RequestMapping(value = "/multiple", method = RequestMethod.POST)
-    public String multipleMsgReceiver(@RequestParam String token, @RequestParam String feature) {
+    public ReturnInfo multipleMsgReceiver(@RequestParam String token, @RequestParam String feature) {
         if (DateUtils.getMD5Data().equalsIgnoreCase(token)) {
             featureService.multipleFeatureHandler(feature);
-            return "多行信息保存.token is: " + token + " and feature is: " + feature;
+            return new ReturnInfo(AppConfig.UPLOAD_SUCCESS);
         } else {
-            return AppConfig.ILLEGAL_ACCESS;
+            return new ReturnInfo(AppConfig.ILLEGAL_ACCESS);
         }
     }
 
@@ -54,4 +55,5 @@ public class FeatureController {
         List<MultipartFile> fileList = ((MultipartHttpServletRequest) request).getFiles("file");
         return featureService.saveAll(fileList);
     }
+
 }

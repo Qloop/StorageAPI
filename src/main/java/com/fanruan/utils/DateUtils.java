@@ -1,13 +1,11 @@
 package com.fanruan.utils;
 
-import org.apache.tomcat.util.security.MD5Encoder;
-
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
 /**
- * Created by Explorer on 2016/5/4.
+ * Created by Qloop on 2016/5/4.
  */
 public class DateUtils {
 

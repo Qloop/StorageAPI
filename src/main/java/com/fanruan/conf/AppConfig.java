@@ -5,9 +5,11 @@ package com.fanruan.conf;
  */
 public class AppConfig {
 
-    public static final String FILE_SAVE_PATH = "E:\\tmp\\";
+//    public static final String FILE_SAVE_PATH = "E:\\tmp\\";
+    public static final String FILE_SAVE_PATH = "/home/functionLog/";
     public static final String FILE_SAVE_FAILED = "文件保存失败";
     public static final String FILE_SAVE_SUCCESS = "文件保存成功";
     public static final String FILE_EMPTY = "文件为空";
     public static final String ILLEGAL_ACCESS = "非法访问";
+    public static final String UPLOAD_SUCCESS = "上传成功";
 }
