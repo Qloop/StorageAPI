@@ -4,8 +4,8 @@ spring:
       enabled: true
   datasource:
     url: jdbc:mysql://121.251.255.96:3306/yibantest_storagetest
-    username: yibantest
-    password: yibantest
+    username:
+    password:
     test-while-idle: true
     validation-query: SELECT 1
   jpa:

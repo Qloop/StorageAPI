@@ -1,6 +1,7 @@
-package com.fanruan.dao;
+package com.fanruan.dto;
 
 /**
+ * 返回信息
  * Created by Qloop on 2017/1/16.
  */
 public class ReturnInfo {

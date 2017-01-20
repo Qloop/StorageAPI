@@ -1,7 +1,7 @@
 package com.fanruan.controllers;
 
 import com.fanruan.conf.AppConfig;
-import com.fanruan.dao.ReturnInfo;
+import com.fanruan.dto.ReturnInfo;
 import com.fanruan.service.FeatureService;
 import com.fanruan.utils.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
